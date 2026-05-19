@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moonlit Garden</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #131a2c;
+            overflow: hidden;
+        }
+
+        /* background */
+        #gardenCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* add wish button */
+        #addBtn {
+            position: absolute;
+            z-index: 10;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* popup drawing panel */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 100;
+        }
+
+       #drawCanvas {
+            background: transparent;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<button id="addBtn">+ Add Wish</button>
+
+<canvas id="gardenCanvas"></canvas>
+
+<!-- popup drawing panel -->
+<div id="modal">
+    <canvas id="drawCanvas" width="300" height="300"></canvas>
+    <br>
+    <!--create colour picker ui-->
+    <input type="color" id="colorPicker" value="#ff69b4"> 
+    <button id="eraseBtn">🧽Erase</button>
+
+    <button id="growBtn">🌸 Grow</button>
+    <button id="closeBtn">❌ Close</button>
+</div>
+
+<script src="/garden.js"></script>
+
+</body>
+</html>
