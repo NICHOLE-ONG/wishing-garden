@@ -51,18 +51,42 @@
 
 <canvas id="gardenCanvas"></canvas>
 
-<!-- popup drawing panel -->
 <div id="modal">
-    <canvas id="drawCanvas" width="300" height="300"></canvas>
-    <br>
-    <!--create colour picker ui-->
-    <input type="color" id="colorPicker" value="#ff69b4"> 
-    <button id="eraseBtn">🧽Erase</button>
+    <!-- popup drawing panel -->
+    <div id="drawingStep">
+        <canvas id="drawCanvas" width="300" height="300"></canvas>
+        <br>
+        <!--create colour picker ui-->
+        <input type="color" id="colorPicker" value="#ff69b4">
+        <button id="eraseBtn">🧽 Erase</button>
+        <button id="nextBtn">➡ Next</button>
+        <button id="closeBtn">❌ Close</button>
 
-    <button id="growBtn">🌸 Grow</button>
-    <button id="closeBtn">❌ Close</button>
+    </div>
+
+    <!--message/wish textbox-->
+    <div id="wishStep" style="display:none;">
+
+        <h3 style="color:white;">Make a Wish 🌙</h3>
+        <input
+            id="createdBy"
+            placeholder="Your name (optional)"
+        >
+        <br><br>
+        <textarea
+            id="wishMessage"
+            rows="5"
+            cols="30"
+            placeholder="Write your wish..."
+        ></textarea>
+        <br><br>
+        <button id="plantBtn">
+            🌸 Plant Wish
+        </button>
+
+    </div>
+
 </div>
-
 <script src="/garden.js"></script>
 
 </body>

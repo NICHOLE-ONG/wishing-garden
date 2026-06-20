@@ -11,10 +11,13 @@ let isErasing = false;
 //connects js to html elements
 const modal = document.getElementById("modal");
 const addBtn = document.getElementById("addBtn");
-const growBtn = document.getElementById("growBtn");
 const closeBtn = document.getElementById("closeBtn");
 const colorPicker = document.getElementById("colorPicker");
 const eraseBtn = document.getElementById("eraseBtn");
+const nextBtn = document.getElementById("nextBtn");
+const plantBtn = document.getElementById("plantBtn");
+
+let gardenWishes = [];
 
 //set up garden
 gardenCanvas.width = window.innerWidth;
@@ -25,6 +28,7 @@ async function loadGarden() {
     try {
         const res = await fetch("/api/wishes");
         const data = await res.json();
+        gardenWishes = data;
 
         //clears screen before rendering everyth
         gctx.clearRect(0, 0, gardenCanvas.width, gardenCanvas.height);
@@ -159,31 +163,51 @@ closeBtn.onclick = () => {
     modal.style.display = "none";
     dctx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
     strokes = [];
+    document.getElementById("drawingStep").style.display = "block";
+    document.getElementById("wishStep").style.display = "none";
 };
 
-growBtn.onclick = async () => {
-    try {
-        if (!strokes.length) return;
-        //copy strokes safely
-        const savedStrokes = [...strokes];
+nextBtn.onclick = () => {
+    if (!strokes.length) {
+        alert("draw a flower first ! ");
+        return;
+    }
+    //hides drawing panel, makes wish box visible
+    document.getElementById("drawingStep").style.display = "none";
+    document.getElementById("wishStep").style.display = "block";
+};
 
+plantBtn.onclick = async () => {
+    try {
+        const message = document.getElementById("wishMessage").value;
+        const createdBy = document.getElementById("createdBy").value || "Anonymous";
+
+        //send data to backend
         await fetch("/api/wishes", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ strokes: savedStrokes })
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify({ strokes, message, createdBy })
         });
 
-        //once sent, close drawing panel + reset sketchpad
+        //once sent, close text panel & reset stroke data
         modal.style.display = "none";
         dctx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+
         strokes = [];
 
+        //reset all values
+        document.getElementById("wishMessage").value = "";
+        document.getElementById("createdBy").value = "";
+        document.getElementById("drawingStep").style.display = "block";
+        document.getElementById("wishStep").style.display = "none";
+
         loadGarden();
-    }
-    catch (err) {
+
+    } catch (err) {
         console.error('Error reading database', err);
     }
 };
 
 // start
 loadGarden();
+
