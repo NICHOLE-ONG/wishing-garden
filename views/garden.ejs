@@ -42,13 +42,55 @@
             background: transparent;
             border-radius: 20px;
         }
+
+        #wishPopup {
+            display: none;
+            position: absolute;
+            background: rgba(20, 20, 30, 0.95);
+            color: white;
+            padding: 12px 14px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 200px;
+            z-index: 999;
+        }
+        
+        #closeWishPopup {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+
+            border: none;
+            background: transparent;
+            color: white;
+
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        /* wish message */
+        #wishText {
+            color: white;
+            font-style: italic;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* author */
+        #wishAuthor {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
     </style>
 </head>
 
 <body>
 
 <button id="addBtn">+ Add Wish</button>
-
 <canvas id="gardenCanvas"></canvas>
 
 <div id="modal">
@@ -87,6 +129,16 @@
     </div>
 
 </div>
+
+<!-- wish textbox -->
+<div id="wishPopup"
+    <div id="wishBox">
+        <button id="closeWishPopup">✖</button>
+        <p id="wishText"></p>
+        <p id="wishAuthor"></p>
+    </div>
+</div>
+
 <script src="/garden.js"></script>
 
 </body>

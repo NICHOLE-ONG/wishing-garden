@@ -16,6 +16,10 @@ const colorPicker = document.getElementById("colorPicker");
 const eraseBtn = document.getElementById("eraseBtn");
 const nextBtn = document.getElementById("nextBtn");
 const plantBtn = document.getElementById("plantBtn");
+const wishPopup = document.getElementById("wishPopup");
+const closeWishPopup = document.getElementById("closeWishPopup");
+const wishText = document.getElementById("wishText");
+const wishAuthor = document.getElementById("wishAuthor");
 
 let gardenWishes = [];
 
@@ -206,6 +210,46 @@ plantBtn.onclick = async () => {
     } catch (err) {
         console.error('Error reading database', err);
     }
+};
+
+// for wish/message
+gardenCanvas.addEventListener("click", (e) => {
+    try {
+        const x = e.offsetX;
+        const y = e.offsetY;
+        const clickedWish = gardenWishes.find(wish => {
+            const dx = x - wish.position.x;
+            const dy = y - wish.position.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            return distance < 50;
+        });
+
+        if (!clickedWish) return;
+        
+        // set text
+        wishText.textContent = clickedWish.message;
+        wishAuthor.textContent = `— ${clickedWish.createdBy}`;
+
+        // show popup
+        wishPopup.style.display = "block";
+
+        // position popup near click
+        const popupX = e.clientX;
+        const popupY = e.clientY;
+
+        wishPopup.style.left = `${popupX + 10}px`;
+        wishPopup.style.top = `${popupY - 10}px`;
+
+    } catch (err) {
+        console.error('Error reading database', err);
+    }
+
+});
+
+//close wish textbox
+closeWishPopup.onclick = () => {
+    wishPopup.style.display = "none";
 };
 
 // start
