@@ -1,22 +1,22 @@
-#Community Wishing Garden
+# Community Wishing Garden
 
 A community wishing garden. Draw a flower, write a wish, and plant it in a shared moonlit garden where everyone else's flowers are growing too. Wander through the garden, read other people's wishes, and water their flowers as a little act of hope.
 
-Features
+# Features
 Draw your own flower: sketch freehand on a canvas with a colour picker and eraser. Strokes are saved as vector points, so every flower renders with a soft glow in the garden.
 Make a wish: attach a message (and an optional name, or stay anonymous) to your flower.
 Plant it in the shared garden: your flower is placed in the garden and appears for everyone.
 Read other people's wishes: click any flower to open a popup with its wish and author.
 Water flowers: give someone else's wish a bit of hope. Each flower keeps a water count.
 
-Tech Stack
+# Tech Stack
 Layer	Tools
 Server	Node.js, Express
 Database	MongoDB with Mongoose
 Views	EJS
 Frontend	Vanilla JavaScript, HTML5 Canvas
 
-Getting Started
+# Getting Started
 Prerequisites
 Node.js (v18 or newer recommended)
 A MongoDB database (local, or a free MongoDB Atlas cluster)
