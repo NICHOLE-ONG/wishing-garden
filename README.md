@@ -1,4 +1,4 @@
-# 🌙 Wishing Garden
+# 🌙 Community Wishing Garden
 
 A community wishing garden. Draw a flower, write a wish, and plant it in a shared moonlit garden where everyone else's flowers are growing too. Wander through the garden, read other people's wishes, and water their flowers as a little act of hope.
 
