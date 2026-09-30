@@ -18,7 +18,6 @@ A community wishing garden. Draw a flower, write a wish, and plant it in a share
 | Database | MongoDB with Mongoose |
 | Views | EJS |
 | Frontend | Vanilla JavaScript, HTML5 Canvas (Pointer Events for drawing) |
-| Config | dotenv |
 
 ## 🚀 Getting Started
 
